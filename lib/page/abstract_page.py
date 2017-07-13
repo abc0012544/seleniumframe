@@ -2,7 +2,8 @@
 import os,time,sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from lib.base.util import Util
+from seleniumframe.lib.base.util import Util
+from seleniumframe.lib.base.pyse import pyse
 
 
 class AbstractPage(object):
@@ -22,6 +23,7 @@ class AbstractPage(object):
 
 	def login(self,username,password):
 		self.driver.get(self.base_url + "/user-login.html")
+		self.driver.open()
 		self.driver.find_element_by_id('account').clear()
 		self.driver.find_element_by_id('account').send_keys(username)
 		self.driver.find_element_by_name('password').clear()
