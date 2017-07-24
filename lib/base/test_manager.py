@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
-from new import classobj
+#from new import classobj
+import types
 import unittest
 class TestManager:
 
 	@staticmethod
 	def getTest(clz,type):
 		new_classname = str(clz.__name__) + '_' + str(type).capitalize()
-		new_clz=classobj(new_classname,(clz,) , {'type':type})
+		new_clz=type(new_classname,(clz,) , {'type':type})
 		return unittest.makeSuite(new_clz)
 
